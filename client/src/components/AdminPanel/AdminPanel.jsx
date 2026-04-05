@@ -9,6 +9,7 @@ import {
   ThumbsUp, ThumbsDown
 } from 'lucide-react';
 import './AdminPanel.css';
+import { api } from '../../utils/api';
 
 const AdminPanel = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -79,7 +80,7 @@ const AdminPanel = () => {
 
     try {
       console.log('Отправляем запрос на логин с данными:', loginData);
-      const response = await fetch('http://localhost:5000/api/admin/login', {
+      const response = await fetch(`${api}/admin/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(loginData)
@@ -153,7 +154,7 @@ const AdminPanel = () => {
   const fetchStatistics = async () => {
     try {
       console.log('Загрузка статистики...');
-      const data = await fetchWithAuth('http://localhost:5000/api/admin/statistics');
+      const data = await fetchWithAuth(`${api}/admin/statistics`);
       
       if (data && data.success) {
         console.log('Статистика получена:', data.data);
@@ -176,7 +177,7 @@ const AdminPanel = () => {
         ...(bookingFilter !== 'all' && { status: bookingFilter })
       });
 
-      const data = await fetchWithAuth(`http://localhost:5000/api/admin/bookings?${params}`);
+      const data = await fetchWithAuth(`${api}/admin/bookings?${params}`);
       
       if (data && data.success) {
         setBookings(data.data.bookings);
@@ -196,7 +197,7 @@ const AdminPanel = () => {
         ...(reviewFilter !== 'all' && { status: reviewFilter })
       });
 
-      const data = await fetchWithAuth(`http://localhost:5000/api/admin/reviews?${params}`);
+      const data = await fetchWithAuth(`${api}/admin/reviews?${params}`);
       
       if (data && data.success) {
         console.log('Отзывы загружены:', data.data.reviews);
@@ -213,7 +214,7 @@ const AdminPanel = () => {
 
   const updateBookingStatus = async (id, status) => {
     try {
-      const data = await fetchWithAuth(`http://localhost:5000/api/admin/bookings/${id}/status`, {
+      const data = await fetchWithAuth(`${api}/admin/bookings/${id}/status`, {
         method: 'PUT',
         body: JSON.stringify({ status })
       });
@@ -231,7 +232,7 @@ const AdminPanel = () => {
 
   const updateReviewStatus = async (id, status) => {
     try {
-      const data = await fetchWithAuth(`http://localhost:5000/api/admin/reviews/${id}/status`, {
+      const data = await fetchWithAuth(`${api}/admin/reviews/${id}/status`, {
         method: 'PUT',
         body: JSON.stringify({ status })
       });
@@ -251,7 +252,7 @@ const AdminPanel = () => {
     if (!window.confirm('Вы уверены, что хотите удалить эту заявку?')) return;
 
     try {
-      const data = await fetchWithAuth(`http://localhost:5000/api/admin/bookings/${id}`, {
+      const data = await fetchWithAuth(`${api}/admin/bookings/${id}`, {
         method: 'DELETE'
       });
       
@@ -270,7 +271,7 @@ const AdminPanel = () => {
     if (!window.confirm('Вы уверены, что хотите удалить этот отзыв?')) return;
 
     try {
-      const data = await fetchWithAuth(`http://localhost:5000/api/admin/reviews/${id}`, {
+      const data = await fetchWithAuth(`${api}/admin/reviews/${id}`, {
         method: 'DELETE'
       });
       

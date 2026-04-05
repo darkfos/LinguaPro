@@ -8,6 +8,8 @@ import {
 import Modal from '../Modal/Modal'; 
 import './ResultsSection.css';
 
+import { api } from '../../utils/api';
+
 const ResultsSection = () => {
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
@@ -90,7 +92,7 @@ const ResultsSection = () => {
       setError('');
       console.log('Загрузка отзывов...');
       
-      const response = await fetch('http://localhost:5000/api/reviews');
+      const response = await fetch(`${api}/reviews`);
       
       if (!response.ok) {
         throw new Error(`HTTP ошибка! Статус: ${response.status}`);
@@ -166,7 +168,7 @@ const ResultsSection = () => {
     setIsSubmitting(true);
     
     try {
-      const response = await fetch('http://localhost:5000/api/reviews', {
+      const response = await fetch(`${api}/reviews`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
