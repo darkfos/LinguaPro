@@ -109,7 +109,7 @@ const ContactSection = () => {
     {
       icon: <Clock />,
       title: 'График работы',
-      value: 'Пн-Пт: 8:00-19:00',
+      value: 'Пн-Пт: 9:00-19:00',
       description: 'Сб: 9:00-13:00, Вс: выходной'
     }
   ];

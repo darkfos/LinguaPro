@@ -37,7 +37,7 @@ const RulesSection = () => {
             </div>
             <div className="ss-consultation-text">
               <h3>Платформа для занятий</h3>
-              <p>Все занятия проходят на платформе Microsoft Teams. Ссылка на конференцию высылается за 15 минут до начала занятия.</p>
+              <p>Все занятия проходят на платформе Microsoft Teams.</p>
               <div className="ss-consultation-details">
                 <div className="ss-detail-item">
                   <CheckCircle className="ss-detail-icon" />
