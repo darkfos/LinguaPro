@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Clock, Check, ChevronRight, RefreshCw } from 'lucide-react';
 import Modal from '../Modal/Modal';
 import './ContactSection.css';
+import { api } from '../../utils/api';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -39,7 +40,7 @@ const ContactSection = () => {
     setSubmitError('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/bookings', {
+      const response = await fetch(`${api}/bookings`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
