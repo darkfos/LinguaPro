@@ -347,7 +347,6 @@ const ResultsSection = () => {
                         </div>
                         <div className="testimonial-author-rs">
                           <div className="author-name-rs">{testimonial.name}</div>
-                          <div className="author-position-rs">{testimonial.position || 'Ученик'}</div>
                         </div>
                         <div className="testimonial-rating-rs">
                           {renderStars(testimonial.rating)}
@@ -355,26 +354,6 @@ const ResultsSection = () => {
                         </div>
                       </div>
                       <p className="testimonial-text-rs">{testimonial.text}</p>
-                      <div className="testimonial-footer-rs">
-                        <div className="testimonial-date-rs">
-                          {testimonial.created_at 
-                            ? new Date(testimonial.created_at).toLocaleDateString('ru-RU', {
-                                day: '2-digit',
-                                month: '2-digit',
-                                year: 'numeric'
-                              })
-                            : 'Недавно'
-                          }
-                        </div>
-                        <div className="testimonial-status-rs">
-                          {testimonial.status === 'approved' && (
-                            <span className="status-badge-rs approved-rs">✓ Опубликован</span>
-                          )}
-                          {testimonial.status === 'pending' && (
-                            <span className="status-badge-rs pending-rs">⏳ На модерации</span>
-                          )}
-                        </div>
-                      </div>
                     </div>
                   ))}
                 </div>
